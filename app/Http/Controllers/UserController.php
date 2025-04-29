@@ -23,7 +23,6 @@ class UserController extends Controller
             ], 401);
         }
 
-        // Hapus semua token lama (opsional supaya 1 device 1 token)
         $user->tokens()->delete();
 
         $token = $user->createToken('api_token')->plainTextToken;
@@ -35,14 +34,12 @@ class UserController extends Controller
         ]);
     }
 
-    // Tampilkan semua user
     public function index()
     {
         $users = User::all();
         return response()->json($users);
     }
 
-    // Simpan user baru
     public function store(Request $request)
     {
         $request->validate([
@@ -62,14 +59,12 @@ class UserController extends Controller
         return response()->json($user, 201);
     }
 
-    // Tampilkan 1 user berdasarkan id
     public function show($id)
     {
         $user = User::findOrFail($id);
         return response()->json($user);
     }
 
-    // Update user
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
@@ -92,12 +87,20 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    // Hapus user
     public function destroy($id)
     {
         $user = User::findOrFail($id);
         $user->delete();
 
         return response()->json(['message' => 'User deleted successfully']);
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return response()->json([
+            'message' => 'Logout successful'
+        ]);
     }
 }

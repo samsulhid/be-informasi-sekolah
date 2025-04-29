@@ -17,6 +17,7 @@ class GalleriController extends Controller
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'img' => 'required|string',
+            'category' => 'required|in:akademik,prestasi,event,ekstrakurikuler', // Tambahkan validasi kategori
         ]);
 
         $Galleri = Galleri::create($data);
@@ -34,6 +35,7 @@ class GalleriController extends Controller
         $data = $request->validate([
             'title' => 'sometimes|string|max:255',
             'img' => 'sometimes|string',
+            'category' => 'sometimes|in:akademik,prestasi,event,ekstrakurikuler', // Tambahkan validasi kategori
         ]);
 
         $Galleri->update($data);

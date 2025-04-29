@@ -17,8 +17,9 @@ class ProfilAlumniController extends Controller
         $data = $request->validate([
             'img' => 'required|string',
             'name' => 'required|string|max:255',
-            'jurusan' => 'required|string|max:255',
+            'jurusan' => 'required|in:PPLG,DKV,TJKT,MPLB,PMN,HTL,KLN',
             'work_place' => 'required|string|max:255',
+            'work_position' => 'required|string|max:255',
         ]);
 
         $profilAlumni = ProfilAlumni::create($data);
@@ -36,8 +37,9 @@ class ProfilAlumniController extends Controller
         $data = $request->validate([
             'img' => 'sometimes|string',
             'name' => 'sometimes|string|max:255',
-            'jurusan' => 'sometimes|string|max:255',
+            'jurusan' => 'sometimes|in:PPLG,DKV,TJKT,MPLB,PMN,HTL,KLN',
             'work_place' => 'sometimes|string|max:255',
+            'work_position' => 'sometimes|string|max:255',
         ]);
 
         $profilAlumni->update($data);

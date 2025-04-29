@@ -16,7 +16,7 @@ class TestimoniController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
-            'message' => 'required',
+            'message' => 'required|string',
             'img' => 'required|string',
         ]);
 
@@ -34,7 +34,7 @@ class TestimoniController extends Controller
     {
         $data = $request->validate([
             'name' => 'sometimes|string|max:255',
-            'message' => 'sometimes',
+            'message' => 'sometimes|string',
             'img' => 'sometimes|string',
         ]);
 

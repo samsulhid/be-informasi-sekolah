@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('img');
             $table->string('name');
-            $table->string('jurusan');
+            $table->enum('jurusan', ['PPLG', 'DKV', 'TJKT', 'MPLB', 'PMN', 'HTL', 'KLN']);
             $table->string('work_place');
             $table->string('work_position');
             $table->timestamps();

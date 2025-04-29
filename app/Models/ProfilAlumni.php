@@ -9,5 +9,5 @@ class ProfilAlumni extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['img', 'name', 'jurusan', 'work_place'];
+    protected $fillable = ['img', 'name', 'jurusan', 'work_place','work_position'];
 }
